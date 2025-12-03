@@ -2,10 +2,13 @@
 Web Interface for Image Caption Generator using Gradio
 This script creates an interactive web interface where users can upload images
 and get AI-generated captions describing the content.
+
+Works seamlessly in both local and Hugging Face Spaces environments.
 """
 
 import gradio as gr
 from caption_generator import ImageCaptionGenerator
+from config import GRADIO_CONFIG, IS_HUGGINGFACE, ENVIRONMENT
 
 
 # Initialize the caption generator (load model once)
@@ -52,14 +55,13 @@ demo = gr.Interface(
 
 
 if __name__ == "__main__":
-    print("\n" + "="*50)
-    print("Starting Image Caption Generator Web Interface")
-    print("="*50)
-    print("\nThe interface will open in your browser automatically.")
-    print("You can also access it at the URL shown below.\n")
+    if not IS_HUGGINGFACE:
+        print("\n" + "="*50)
+        print("Starting Image Caption Generator Web Interface")
+        print(f"Environment: {ENVIRONMENT}")
+        print("="*50)
+        print("\nThe interface will open in your browser automatically.")
+        print("You can also access it at the URL shown below.\n")
     
-    # Launch the interface
-    demo.launch(
-        share=True,  # Set to True to create a public link
-        show_error=True
-    )
+    # Launch the interface with environment-specific configuration
+    demo.launch(**GRADIO_CONFIG)

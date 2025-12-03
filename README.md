@@ -1,6 +1,20 @@
+---
+title: AI Image Caption Generator
+emoji: 🖼️
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 3.50.2
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # 🖼️ AI Image Caption Generator
 
 An intelligent image captioning system that uses deep learning to automatically generate descriptive captions for images. Simply upload an image, and the AI will describe what it sees!
+
+**✨ Works seamlessly both locally and on Hugging Face Spaces!**
 
 ## ✨ Features
 
